@@ -4,16 +4,23 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const del = require('del');
 
 sass.compiler = require('node-sass');
 
-function css () {
+const clean = () => del(['./public/js', './public/css']);
+
+const css = () => {
   return gulp.src('./scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./public/css'))
+    .pipe(postcss([ autoprefixer() ]))
     .pipe(gulp.dest('./public/css'));
 };
 
-function javascript () {
+const javascript = () => {
   return gulp.src('./js/**/*.js')
     .pipe(babel({
       presets: ['@babel/preset-env']
@@ -21,17 +28,23 @@ function javascript () {
     .pipe(gulp.dest('./public/js'));
 };
 
-gulp.task('css', css);
-gulp.task('javascript', javascript);
-
-exports.default = function(done) {
+const dev = (cb) => {
   nodemon({
     script: './bin/www',
-    ext: 'js css',
-    done: done
+    ext: 'js css twig'
   });
-  // You can use a single task
+
   gulp.watch('scss/**/*.scss', css);
-  // Or a composed task
+
   gulp.watch('js/**/*.js', javascript);
+
+  cb();
 };
+
+const build = gulp.series(clean, gulp.parallel(css, javascript));
+
+exports.clean = clean;
+exports.css = css;
+exports.js = javascript;
+exports.dev = dev;
+exports.default = build;
