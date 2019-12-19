@@ -1,5 +1,7 @@
 {% extends 'layout.twig' %}
 
+{% from "./macros/forecast-icon.twig" import forecastIcon %}
+
 {% block main %}
   <h1>{{ title }} {{ location }}</h1>
   <section class="forecast__summary">
@@ -10,7 +12,7 @@
   <div class="forecast__7day">
     {% for day in forecast.days.data %}
     <div class="forecast__tile">
-      <div class="forecast__tile">{{ day.icon }}</div>
+      <div class="forecast__icon">{{ forecastIcon(day.icon) }}</div>
       <div class="forecast__summary">{{ day.summary }}</div>
     </div>
     {% endfor %}

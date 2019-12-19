@@ -2,3 +2,7 @@
   flex-shrink: 0;
   padding: $spacer;
 }
+
+.nav__list {
+  @include list-unstyled;
+}
