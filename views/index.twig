@@ -3,4 +3,17 @@
 {% block body %}
   <h1>{{title}}</h1>
   <p>Welcome to {{title}}</p>
+  <form name="forecast" action="" method="POST">
+    <label for="zipcode">Zip Code</label>
+    <input 
+      type="text" 
+      name="zipcode"
+      id="zipcode"
+      placeholder="Enter 5-digit zip code"
+      required="required"
+      minlength="5"
+      maxlength="5"
+    />
+    <button type="submit">Get Forecast</button>
+  </form>
 {% endblock %}
