@@ -3,4 +3,17 @@
 {% block body %}
   <h1>{{title}}</h1>
   <p>Welcome to {{title}}</p>
+  <section class="forecast__summary">
+    <header>This week's outlook:</header>
+    <div class="forecast__icon">{{ forecast.icon }}</div>
+    <div>{{ forecast.summary }}</div>
+  </section>
+  <div class="forecast__7day">
+    {% for day in forecast.days.data %}
+    <div class="forecast__tile">
+      <div class="forecast__tile">{{ day.icon }}</div>
+      <div class="forecast__summary">{{ day.summary }}</div>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock %}
