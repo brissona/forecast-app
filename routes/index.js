@@ -37,7 +37,8 @@ function getWeather(lat, lng) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    title: 'Express'
+    title: 'Welcome',
+    subhead: 'To view this week\'s weather, please provide your zip code in the form below.'
   });
 });
 
@@ -52,7 +53,8 @@ router.post('/', function(req, res) {
         .then(function(sum) {
           // Render forecast view with response data from Dark Sky API.
           res.render('forecast', {
-            title: 'A post appeared! ' + sum.summary,
+            title: 'The week ahead for',
+            location: `${data.default_city}, ${data.state_abbreviation}`,
             forecast: {
               summary: sum.summary,
               icon: sum.icon,

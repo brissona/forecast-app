@@ -1,8 +1,8 @@
 {% extends 'layout.twig' %}
 
-{% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+{% block main %}
+  <h1>{{ title }}</h1>
+  <p>{{ subhead }}</p>
   <form name="forecast" action="" method="POST">
     <label for="zipcode">Zip Code</label>
     <input 

@@ -1,8 +1,7 @@
 {% extends 'layout.twig' %}
 
-{% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+{% block main %}
+  <h1>{{ title }} {{ location }}</h1>
   <section class="forecast__summary">
     <header>This week's outlook:</header>
     <div class="forecast__icon">{{ forecast.icon }}</div>
