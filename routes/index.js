@@ -51,6 +51,17 @@ router.post('/', function(req, res) {
       // If successful pass latitude and longitude properties to getWeather function.
       getWeather(data.latitude, data.longitude)
         .then(function(sum) {
+          const dailyForecastData = sum.daily.data.map((item) => {
+            const [day, month, date, year] = new Date(item.time * 1000).toDateString().split(' ');
+            return Object.assign(item, {
+              day,
+              month,
+              date,
+              year,
+              humidity: item.humidity * 100,
+              precipProbability: item.precipProbability * 100
+            })
+          }); 
           // Render forecast view with response data from Dark Sky API.
           res.render('forecast', {
             title: 'The week ahead for',
@@ -58,7 +69,7 @@ router.post('/', function(req, res) {
             forecast: {
               summary: sum.summary,
               icon: sum.icon,
-              days: sum.daily
+              days: dailyForecastData
             }
           });
         });

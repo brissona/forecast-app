@@ -9,11 +9,29 @@
     <div class="forecast__icon">{{ forecast.icon }}</div>
     <div>{{ forecast.summary }}</div>
   </section>
-  <div class="forecast__7day">
-    {% for day in forecast.days.data %}
-    <div class="forecast__tile">
-      <div class="forecast__icon">{{ forecastIcon(day.icon) }}</div>
-      <div class="forecast__summary">{{ day.summary }}</div>
+  <div class="forecast">
+    {% for day in forecast.days %}
+    <div class="card forecast__card forecast--{{ day.icon }}">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <div class="forecast__date font-weight-bold">
+          {% if loop.first %}
+            Today
+          {% else %}
+            {{ day.month }} {{ day.date }}
+          {% endif %}
+        </div>
+        {{ forecastIcon(day.icon) }}
+      </div>
+      <div class="card-body forecast__body">
+        <div class="forecast__summary">
+          <div class="lead">{{ day.summary }}</div>
+        </div>
+        <div class="forecast__details">
+          <div><strong>High/Low:</strong> {{ day.temperatureHigh | round }}/{{ day.temperatureLow | round }}</div>
+          <div><strong>Precip:</strong> {{ day.precipProbability | round }}%</div>
+          <div><strong>Humidity:</strong> {{ day.humidity }}%</div>
+        </div>
+      </div>
     </div>
     {% endfor %}
   </div>

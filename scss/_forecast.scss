@@ -1,0 +1,35 @@
+.forecast {
+  display: flex;
+  flex-direction: column;
+
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+  }
+
+  &__card {
+    display: flex;
+    flex: 1 1;
+    margin-bottom: $spacer;
+  }
+
+  &__icon {
+    fill: theme-color('primary');
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    
+    @include media-breakpoint-up(sm) {
+      flex-direction: column;
+    }
+  }
+
+  &__summary {    
+    @include media-breakpoint-up(sm) {
+      margin-bottom: $spacer;
+    }
+  }
+}

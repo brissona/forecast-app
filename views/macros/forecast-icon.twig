@@ -2,43 +2,43 @@
 
 {% macro forecastIcon(type) %}
   {% if type == 'clear-night' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-night-clear"></use>
     </svg>
   {% elseif type == 'rain' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-rain"></use>
     </svg>
   {% elseif type == 'snow' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-snow"></use>
     </svg>
   {% elseif type == 'sleet' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-sleet"></use>
     </svg>
   {% elseif type == 'wind' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-windy"></use>
     </svg>
   {% elseif type == 'fog' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-fog"></use>
     </svg>
   {% elseif type == 'cloudy' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-cloudy"></use>
     </svg>
   {% elseif type == 'partly-cloudy-day' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-day-sunny-overcast"></use>
     </svg>
   {% elseif type == 'partly-cloudy-night' %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-night-partly-cloudy"></use>
     </svg>
   {% else %}
-    <svg viewBox="0 0 30 30">
+    <svg viewBox="0 0 30 30" class="forecast__icon" aria-hidden="true">
       <use xlink:href="#si-weather-day-sunny"></use>
     </svg>
   {% endif %}

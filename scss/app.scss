@@ -12,6 +12,7 @@
 @import '../node_modules/bootstrap/scss/images';
 @import '../node_modules/bootstrap/scss/code';
 @import '../node_modules/bootstrap/scss/grid';
+@import '../node_modules/bootstrap/scss/card';
 @import '../node_modules/bootstrap/scss/utilities';
 
 // Global/Layout
@@ -20,3 +21,4 @@
 // Components
 @import './header';
 @import './footer';
+@import './forecast';
