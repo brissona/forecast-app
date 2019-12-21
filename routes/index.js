@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const request = require('./shared/request');
-const API_KEYS = require('./shared/auth');
 const { modifyWeatherData, getTownAndState } = require('./shared/data');
 
 // GET home page
@@ -14,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 // Handle POST on home page
 router.post('/', function(req, res) {
-  request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&key=${API_KEYS.google}`)
+  request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&key=${process.env.GOOGLE_KEY}`)
     .then(data => data.results)
     .then((location) => {
       const locationObj = location[0];
@@ -22,7 +21,7 @@ router.post('/', function(req, res) {
       const { town, state } = getTownAndState(locationObj);
 
       // Pass latitude and longitude properties to Dark Sky request.
-      request(`https://api.darksky.net/forecast/${API_KEYS.darkSky}/${lat},${lng}`)
+      request(`https://api.darksky.net/forecast/${process.env.DARK_SKY_KEY}/${lat},${lng}`)
         .then((weather) => {
           // Render forecast view with response data from Dark Sky API.
           res.render('forecast', {
