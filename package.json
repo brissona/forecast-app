@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www && gulp"
+    "start": "node ./bin/www",
+    "build": "gulp build"
   },
   "dependencies": {
     "autoprefixer": "^9.7.3",
