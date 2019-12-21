@@ -16,4 +16,17 @@ const modifyWeatherData = (arr) => {
   });
 };
 
-module.exports = modifyWeatherData;
+const getTownAndState = (data) => {
+  return data.address_components
+    .filter(ele => ele.types.includes("administrative_area_level_1") || ele.types.includes("locality"))
+    .reduce((acc, curr) => {
+      if (curr.types.includes("administrative_area_level_1")) acc.state = curr.short_name;
+      else acc.town = curr.short_name;
+      return acc;
+    },{});
+};
+
+module.exports = {
+  modifyWeatherData,
+  getTownAndState
+};
