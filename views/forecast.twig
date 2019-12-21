@@ -3,15 +3,11 @@
 {% from "./macros/forecast-icon.twig" import forecastIcon %}
 
 {% block main %}
-  <h1>{{ title }} {{ location }}</h1>
-  <section class="forecast__summary">
-    <header>This week's outlook:</header>
-    <div class="forecast__icon">{{ forecast.icon }}</div>
-    <div>{{ forecast.summary }}</div>
-  </section>
+  <h1>{{ locationHeading }}</h1>
+
   <div class="forecast">
     {% for day in forecast.days %}
-    <div class="card forecast__card forecast--{{ day.icon }}">
+    <div class="card forecast__card">
       <div class="card-header d-flex align-items-center justify-content-between">
         <div class="forecast__date font-weight-bold">
           {% if loop.first %}
