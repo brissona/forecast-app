@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 
 // Handle POST on home page
 router.post('/', function(req, res) {
-  request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&key=AIzaSyBICoU-dLeqdVnzOM3zl1baf-wuZKDICYE`)
+  request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&key=${API_KEYS.google}`)
     .then(data => data.results)
     .then((location) => {
       const locationObj = location[0];
