@@ -4,16 +4,21 @@
   <h1>{{ title }}</h1>
   <p>{{ subhead }}</p>
   <form name="forecast" action="" method="POST">
-    <label for="zipcode">Zip Code</label>
-    <input 
-      type="text" 
-      name="zipcode"
-      id="zipcode"
-      placeholder="Enter 5-digit zip code"
-      required="required"
-      minlength="5"
-      maxlength="5"
-    />
-    <button type="submit">Get Forecast</button>
+    <div class="form-group row">
+      <label for="zipcode" class="col-sm-3 col-md-auto mr-md-2 col-form-label">Zip Code</label>
+      <div class="col-sm-9 col-md-8 col-lg-6">
+        <input 
+          type="text" 
+          name="zipcode"
+          id="zipcode"
+          placeholder="Enter 5-digit zip code"
+          required="required"
+          minlength="5"
+          maxlength="5"
+          class="form-control col-sm-6"
+        />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Get Forecast</button>
   </form>
 {% endblock %}
