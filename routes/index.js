@@ -12,9 +12,14 @@ router.get('/', function(req, res, next) {
 });
 
 // Handle POST on home page
-router.post('/', function(req, res) {
+router.post('/', function(req, res, next) {
   request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&key=${process.env.GOOGLE_KEY}`)
-    .then(data => data.results)
+    .then((data) => {
+      if (data.status === 'OK') return data.results;
+
+      if (data.status === 'ZERO_RESULTS') throw new Error('This is strage, no results were found. Please try again. Confirm that the zip code provided is a valid zip code.');
+      else throw new Error('Looks like there was a problem. Please check back later');
+    })
     .then((location) => {
       const locationObj = location[0];
       const { lat, lng } = locationObj.geometry.location;
@@ -33,6 +38,7 @@ router.post('/', function(req, res) {
           });
         });
     })
+    .catch(next);
 });
 
 module.exports = router;
