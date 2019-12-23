@@ -7,6 +7,7 @@ const nodemon = require('gulp-nodemon');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const del = require('del');
+const minify = require('cssnano');
 
 sass.compiler = require('node-sass');
 
@@ -16,7 +17,14 @@ const css = () => {
   return gulp.src('./scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./public/css'))
-    .pipe(postcss([ autoprefixer() ]))
+    .pipe(postcss([ 
+      autoprefixer(),
+      minify({
+        discardComments: {
+          removeAll: true
+        }
+      })
+     ]))
     .pipe(gulp.dest('./public/css'));
 };
 
