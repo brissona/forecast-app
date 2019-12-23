@@ -23,9 +23,10 @@
           <div class="lead">{{ day.summary }}</div>
         </div>
         <div class="forecast__details">
-          <div><strong>High/Low:</strong> {{ day.temperatureHigh | round }}/{{ day.temperatureLow | round }}</div>
-          <div><strong>Precip:</strong> {{ day.precipProbability | round }}%</div>
-          <div><strong>Humidity:</strong> {{ day.humidity }}%</div>
+          <div><strong>High:</strong> {{ day.temperatureHigh | number_format }}&deg;F</div>
+          <div><strong>Low:</strong> {{ day.temperatureLow | number_format }}&deg;F</div>
+          <div><strong>Precip:</strong> {{ day.precipProbability | number_format }}%</div>
+          <div><strong>Humidity:</strong> {{ day.humidity | number_format }}%</div>
         </div>
       </div>
     </div>
