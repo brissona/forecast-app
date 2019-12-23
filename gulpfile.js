@@ -8,6 +8,8 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const del = require('del');
 const minify = require('cssnano');
+const uglify = require('gulp-uglify');
+const optimizeJs = require('gulp-optimize-js');
 
 sass.compiler = require('node-sass');
 
@@ -33,6 +35,8 @@ const javascript = () => {
     .pipe(babel({
       presets: ['@babel/preset-env']
     }))
+    .pipe(uglify())
+    .pipe(optimizeJs())
     .pipe(gulp.dest('./public/js'));
 };
 
