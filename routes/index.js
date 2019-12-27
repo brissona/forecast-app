@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
     .then((data) => {
       if (data.status === 'OK') return data.results;
 
-      if (data.status === 'ZERO_RESULTS') throw new Error('This is strage, no results were found. Please try again. Confirm that the zip code provided is a valid zip code.');
+      if (data.status === 'ZERO_RESULTS') throw new Error('This is strange, no results were found. Please try again. Confirm that the zip code provided is a valid zip code.');
       else throw new Error('Looks like there was a problem. Please check back later');
     })
     .then((location) => {
