@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 // Handle POST on home page
 router.post('/', function(req, res, next) {
-  request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&key=${process.env.GOOGLE_KEY}`)
+  request(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.zipcode}&components=postal_code:${req.body.zipcode}&key=${process.env.GOOGLE_KEY}`)
     .then((data) => {
       if (data.status === 'OK') return data.results;
 

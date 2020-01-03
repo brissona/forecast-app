@@ -40,7 +40,7 @@ const javascript = () => {
     .pipe(gulp.dest('./public/js'));
 };
 
-const dev = (cb) => {
+const serve = (cb) => {
   nodemon({
     script: './bin/www',
     ext: 'js css twig'
@@ -54,6 +54,8 @@ const dev = (cb) => {
 };
 
 const build = gulp.series(clean, gulp.parallel(css, javascript));
+
+const dev = gulp.series(build, serve);
 
 exports.clean = clean;
 exports.css = css;
